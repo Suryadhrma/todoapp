@@ -15,6 +15,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
   void _showAddTodoModal() {
     showModalBottomSheet(
       context: context,
+      backgroundColor: Color(0xFFFF8C94),
       isScrollControlled: true,
       builder: (context) {
         return Padding(
@@ -22,34 +23,46 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
             top: 150.0,
             left: 16.0,
             right: 16.0,
-            bottom: MediaQuery.of(context).viewInsets.bottom + 16.0, // Tambahkan padding bawah sesuai tinggi keyboard
+            bottom: MediaQuery.of(context).viewInsets.bottom + 16.0,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                // Nama FIELD
-                TextField(
-                decoration: InputDecoration(
-                  hintText: 'Title',
-                  contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-                  border: OutlineInputBorder(),
-                  hintStyle: TextStyle(
+              Transform.translate(
+                offset: Offset(0, -120.0), 
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Title',
+                    contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: const BorderSide(
+                        color: Color(0xFFFF8C94),
+                        width: 2.0,
+                      ),
+                    ),
+                    hintStyle: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.normal,
                     fontSize: 16.0,
                   ),
+                  onChanged: (value) {
+                    setState(() {
+                      newTodoTitle = value;
+                    });
+                  },
                 ),
-                style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.normal,
-                  fontSize: 16.0,
-                ),
-                onChanged: (value) {
-                  setState(() {
-                    newTodoTitle = value;
-                  });
-                },
               ),
               SizedBox(height: 16.0),
               TextField(
@@ -88,7 +101,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
                   ),
                 ],
               )
-            ],
+          ],
           ),
         );
       },
