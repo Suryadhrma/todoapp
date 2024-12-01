@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/pages/homescreen_page.dart';
+import 'package:todoapp/pages/signup_page.dart';
 
 class SignInPage extends StatelessWidget {
   @override
@@ -14,11 +16,11 @@ class SignInPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min, // Batasi ukuran kolom
               children: [
                 // LOGO
-                    Image.asset(
-                      'assets/images/logoapp.png',
-                      width: 150,
-                      height: 150,
-                    ),
+                Image.asset(
+                  'assets/images/logoapp.png',
+                  width: 150,
+                  height: 150,
+                ),
                 const SizedBox(height: 160),
 
                 // EMAIL FIELD
@@ -106,11 +108,11 @@ class SignInPage extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 5),
 
                 // SIGN IN BUTTON
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreenPage())); },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF8C94),
                     padding: const EdgeInsets.symmetric(
@@ -130,12 +132,12 @@ class SignInPage extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
 
                 // SIGNUP TEXT
                 TextButton(
                   onPressed: () {
-                    // Navigator to signup page
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => SignUpPage()));
                   },
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(EdgeInsets.zero),
